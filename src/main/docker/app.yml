@@ -1,0 +1,14 @@
+version: '2'
+services:
+    speaktogether-app:
+        image: speaktogether
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://speaktogether-postgresql:5432/SpeakTogether
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    speaktogether-postgresql:
+        extends:
+            file: postgresql.yml
+            service: speaktogether-postgresql
